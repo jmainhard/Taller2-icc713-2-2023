@@ -8,6 +8,9 @@ const {
 } = require("../src/script");
 
 describe("Script tests", () => {
+  // beforeAll not used since it is (a) synchronous setup
+  const dummyString = "Non-Existent";
+
   describe("getTwoByConsole", () => {
     it("Should return two games by PS2 console", () => {
       const games = getTwoByConsole("PS2");
@@ -33,9 +36,10 @@ describe("Script tests", () => {
       games.forEach((game) => expect(game.genres).toContain("Survival Horror"));
     });
 
-    // FIXME: This test is hoarding CPU processsing and taking too long to finish
-    it.skip("Should throw an error when the genre does not exist", () => {
-      expect(() => getThreeByGenre("Non-Existent")).toThrow();
+    it("Should throw an error when the genre does not exist", () => {
+      expect(() => getThreeByGenre(dummyString)).toThrow(
+        `No games found for genre: ${dummyString}`
+      );
     });
   });
 
@@ -48,13 +52,17 @@ describe("Script tests", () => {
     });
 
     it("Should throw and error when the console doesnt exists", () => {
-      expect(() =>
-        getGameByConsoleAndGenre("Non-Existent", "Sports")
-      ).toThrow();
+      const genre = "Sports";
+      expect(() => getGameByConsoleAndGenre(dummyString, genre)).toThrow(
+        `No games found for console: ${dummyString} and genre: ${genre}`
+      );
     });
 
     it("Should throw and error when the genre doesnt exists", () => {
-      expect(() => getGameByConsoleAndGenre("GBA", "Non-Existent")).toThrow();
+      const console = "GBA";
+      expect(() => getGameByConsoleAndGenre(console, dummyString)).toThrow(
+        `No games found for console: ${console} and genre: ${dummyString}`
+      );
     });
   });
 
@@ -67,7 +75,7 @@ describe("Script tests", () => {
     });
 
     it("Should return undefined when not found", () => {
-      expect(getGameByName("Non-Existent")).toBeUndefined();
+      expect(getGameByName(dummyString)).toBeUndefined();
     });
   });
 
@@ -79,7 +87,7 @@ describe("Script tests", () => {
     });
 
     it("Should return a empty list when the genre doesnt exists", () => {
-      const games = getGamesByGenre("Non-Existent");
+      const games = getGamesByGenre(dummyString);
       expect(games).toBeDefined();
       expect(games).toEqual([]);
     });
