@@ -22,7 +22,7 @@ function getTwoByConsole(videoGamesConsole) {
 }
 
 // Get three games by genre
-function getTwoByGenre(genre) {
+function getThreeByGenre(genre) {
   const allGamesWithGenre = allGames.filter((game) =>
     game.genres.includes(genre)
   );
@@ -69,7 +69,7 @@ function getGamesByGenre(genre) {
 
 module.exports = {
   getTwoByConsole,
-  getTwoByGenre,
+  getThreeByGenre,
   getGameByConsoleAndGenre,
   getGameByName,
   getGamesByGenre,
