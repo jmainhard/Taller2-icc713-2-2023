@@ -35,37 +35,26 @@ describe("Script tests", () => {
 
     // FIXME: This test is hoarding CPU processsing and taking too long to finish
     it.skip("Should throw an error when the genre does not exist", () => {
-      expect(getThreeByGenre("Non-Existent")).toThrow();
+      expect(() => getThreeByGenre("Non-Existent")).toThrow();
     });
   });
 
   describe("getGameByConsoleAndGenre", () => {
-    it("Should return a game for GBA and Sport genre", () => {
-      expect(0).toBeTruthy();
-      const game = getGameByConsoleAndGenre("GBA", "Sport");
+    it("Should return a game for GBA and Sports genre", () => {
+      const game = getGameByConsoleAndGenre("GBA", "Sports");
       expect(game).toBeDefined();
       expect(game.video_console).toEqual("GBA");
-      expect(game.genre).toEqual("Sport");
+      expect(game.genres).toContain("Sports");
     });
 
     it("Should throw and error when the console doesnt exists", () => {
-      expect(0).toBeTruthy();
-      try {
-        getGameByConsoleAndGenre("Non-Existent", "Sport");
-        throw new Error("other-error");
-      } catch (error) {
-        expect(error.message).not.toEqual("other-error");
-      }
+      expect(() =>
+        getGameByConsoleAndGenre("Non-Existent", "Sports")
+      ).toThrow();
     });
 
     it("Should throw and error when the genre doesnt exists", () => {
-      expect(0).toBeTruthy();
-      try {
-        getGameByConsoleAndGenre("GBA", "Non-Existent");
-        throw new Error("other-error");
-      } catch (error) {
-        expect(error.message).not.toEqual("other-error");
-      }
+      expect(() => getGameByConsoleAndGenre("GBA", "Non-Existent")).toThrow();
     });
   });
 

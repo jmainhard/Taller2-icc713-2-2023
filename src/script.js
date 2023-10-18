@@ -46,6 +46,10 @@ function getGameByConsoleAndGenre(console, genre) {
     (game) => game.genres.includes(genre) && game.video_console === console
   );
 
+  if (allGamesByConsoleAndGenre.length === 0) {
+    throw new Error(`No games found for console: ${console} and genre: ${genre}`);
+  }
+
   const random = getRandomNumber(0, allGamesByConsoleAndGenre.length);
 
   return allGamesByConsoleAndGenre[random];
