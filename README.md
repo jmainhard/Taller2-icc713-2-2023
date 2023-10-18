@@ -1,8 +1,6 @@
-# Taller 2 ICC713
+# Pruebas básicas con Jest - Tarea 2 asignatura Pruebas de Software
 
-Resolver según lo especificado en el PDF `Taller 2 - ICC713.pdf`
+Este proyecto funciona de acuerdo a las especificaciones en el PDF `Taller 2 - ICC713.pdf`.
+El fork completa las pruebas que fueron iniciadas en el repositorio original.
 
-## Integrantes
-- Integrante 1
-- Integrante 2
-- Integrante 3
+Hecho por Jorge Mainhard cómo parte de aprender testing con JavaScript

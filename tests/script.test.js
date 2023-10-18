@@ -19,7 +19,7 @@ describe("Script tests", () => {
       expect(games[1].video_console).toEqual("PS2");
     });
 
-    it("Should throw and error when the console doesnt exists", () => {
+    it("Shfould throw and error when the console doesnt exists", () => {
       try {
         getTwoByConsole("CONSOLE");
         throw new Error("other-error");
