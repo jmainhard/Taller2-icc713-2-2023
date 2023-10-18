@@ -27,6 +27,10 @@ function getThreeByGenre(genre) {
     game.genres.includes(genre)
   );
 
+  if (allGamesWithGenre.length === 0) {
+    throw new Error(`No games found for genre: ${genre}`);
+  }
+
   const randoms = getListOfUniqueRandomNumbers({
     min: 0,
     max: allGamesWithGenre.length,
