@@ -59,17 +59,15 @@ describe("Script tests", () => {
   });
 
   describe("getGameByName", () => {
+    // note case insensitive
     it("Should return the Resident evil 2 game", () => {
-      expect(0).toBeTruthy();
       const game = getGameByName("Resident evil 2");
       expect(game).toBeDefined();
-      expect(game.name).toEqual("Resident evil 2");
+      expect(game.name).toEqual("Resident Evil 2");
     });
 
     it("Should return undefined when not found", () => {
-      expect(0).toBeTruthy();
-      const game = getGameByName("Non-Existent");
-      expect(game).toBeUndefined();
+      expect(getGameByName("Non-Existent")).toBeUndefined();
     });
   });
 
